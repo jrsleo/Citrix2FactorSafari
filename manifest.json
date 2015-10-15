@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "Citrix 2-Factor Helper",
+  "description": "This extension helps fill in your individual 2 factor authentication password for Citrix",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_title": "Click here!",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
