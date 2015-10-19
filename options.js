@@ -1,10 +1,17 @@
 // Saves options to chrome.storage.local.
 function save_options() {
-  var color = document.getElementById('color').value;
-  var likesColor = document.getElementById('like').checked;
+  var A1 = document.getElementById('A1').value;
+  var A2 = document.getElementById('A2').value;
+  var A3 = document.getElementById('A3').value;
+  var A4 = document.getElementById('A4').value;
+  var A5 = document.getElementById('A5').value;
+  
   chrome.storage.local.set({
-    favoriteColor: color,
-    likesColor: likesColor
+    A1: A1,
+    A2: A2,
+    A3: A3,
+    A4: A4,
+    A5: A5
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -20,11 +27,17 @@ function save_options() {
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.local.get({
-    favoriteColor: 'red',
-    likesColor: true
+    A1: '',
+    A2: '',
+    A3: '',
+    A4: '',
+    A5: ''
   }, function(items) {
-    document.getElementById('color').value = items.favoriteColor;
-    document.getElementById('like').checked = items.likesColor;
+    document.getElementById('A1').value = items.A1;
+    document.getElementById('A2').value = items.A2;
+    document.getElementById('A3').value = items.A3;
+    document.getElementById('A4').value = items.A4;
+    document.getElementById('A5').value = items.A5;
   });
 }
 
