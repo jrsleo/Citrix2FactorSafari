@@ -18,6 +18,11 @@
     "chrome_style": true
   },
 
+  "background": {
+    "scripts": ["challenge.js"],
+    "persistent": false
+  },
+
   "permissions": [
     "activeTab",
     "storage",
