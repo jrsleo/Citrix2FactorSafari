@@ -3,7 +3,7 @@ describe("Challenge question", function() {
 
 
   beforeEach(function() {  
-  	label = "  Enter a response to the grid challenge [B2] [D2] [F1] [H4] [J3] using a card with serial number 9872934876."
+  	label = "  Enter a response to the grid challenge [B5] [D2] [F1] [H4] [J3] using a card with serial number 9872934876."
   });
 
   it("has a value", function() {
@@ -15,6 +15,6 @@ describe("Challenge question", function() {
   	expect(parse(label).length).toEqual(5);
   });
 
-  
+
 
 });

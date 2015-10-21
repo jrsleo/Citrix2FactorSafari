@@ -4,13 +4,17 @@ document.getElementById('lblChallenge').addEventListener('onload',
     parse(question));
 
 function parse (input) {
-	var temp = input.trim();
+	input = input.trim();
 	var output = new Array();
 
-	temp = temp.split(" ");
+	input = input.split(" ");
 
-	for (var i = 0; i < temp.length; i++) {
-		if (temp[i].charAt(0) == "[") {
+	for (var i = 0; i < input.length; i++) {
+		var temp = new Array();
+
+		if (input[i].charAt(0) == "[") {
+			temp[i] = input[i].slice(1,3);
+
 			output.push(temp[i]);
 		};
 	};
