@@ -3,7 +3,7 @@ translate(parse(challenge_question));
 
 // takes String input and returns Array of strings in output
 function parse (input) {
-	var output = new Array();
+	var output = [];
 	input = input.trim();
 	input = input.split(" ");
 
@@ -71,7 +71,7 @@ function translate(input) {
     J5: ''
   }, function(items) {
     var matching_text = "";
-    var output = new Array();
+    var output = [];
 
     for (var i = 0; i < input.length; i++) {
 		matching_text = input[i];
@@ -81,6 +81,10 @@ function translate(input) {
 
 	// publish the output code in case of manual typing
 	document.getElementById('lblChallenge').innerHTML = document.getElementById('lblChallenge').innerHTML + "The secret code is: " + output;
+
+	// input the code into the field
+	//document.getElementById('ID_Challenge_Response').value = 
+
   });
 
 }
