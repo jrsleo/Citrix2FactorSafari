@@ -70,21 +70,23 @@ function translate(input) {
     J4: '',
     J5: ''
   }, function(items) {
-    var matching_text = "";
+    var text = "";
     var output = [];
 
+    // Create array of matched code values
     for (var i = 0; i < input.length; i++) {
-		matching_text = input[i];
+		output.push(items[input[i]]);
+	};
 
-		output.push(items[matching_text]);
+	// Create text string of those values
+	for (var i = 0; i < output.length; i++) {
+		text += output[i];
 	};
 
 	// publish the output code in case of manual typing
-	document.getElementById('lblChallenge').innerHTML = document.getElementById('lblChallenge').innerHTML + "The secret code is: " + output;
+	document.getElementById('lblChallenge').innerHTML = document.getElementById('lblChallenge').innerHTML + "The secret code is: " + text;
 
 	// input the code into the field
-	//document.getElementById('ID_Challenge_Response').value = 
-
+	document.getElementById('ID_CHALLENGE_RESPONSE').value = text;
   });
-
 }
