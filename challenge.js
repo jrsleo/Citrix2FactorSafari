@@ -1,18 +1,7 @@
 var challenge_question = document.getElementById('lblChallenge').innerHTML;
-console.log(challenge_question);
+translate(parse(challenge_question));
 
-//document.getElementById('lblChallenge').innerHTML = document.getElementById('lblChallenge').innerHTML + parse(challenge_question);
-
-var temp = parse(challenge_question);
-console.log("temp: " + temp);
-
-translate(temp);
-
-
-
-
-
-
+// takes String input and returns Array of strings in output
 function parse (input) {
 	var output = new Array();
 	input = input.trim();
@@ -29,9 +18,6 @@ function parse (input) {
 
 // Grabs data from options page and takes parsed array and returns corresponding code value
 function translate(input) {
-  var output = new Array();
-  var matching_text = "";
-
   chrome.storage.local.get({
     A1: '',
     A2: '',
@@ -84,12 +70,16 @@ function translate(input) {
     J4: '',
     J5: ''
   }, function(items) {
+    var matching_text = "";
+    var output = new Array();
+
     for (var i = 0; i < input.length; i++) {
 		matching_text = input[i];
 
 		output.push(items[matching_text]);
-		console.log("translate output: " + output);
 	};
+
+	// publish the output code in case of manual typing
 	document.getElementById('lblChallenge').innerHTML = document.getElementById('lblChallenge').innerHTML + "The secret code is: " + output;
   });
 
