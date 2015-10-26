@@ -33,4 +33,11 @@ describe("getNextID", function() {
 
 		expect(getNextID(element)).toEqual("A2");
 	});
+
+	it("should return A1 if the input is an element with id J5", function() {
+		var element = document.createElement("input");
+		element.id = "J5";
+
+		expect(getNextID(element)).toEqual("A1");
+	});
 });

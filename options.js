@@ -7,8 +7,6 @@ function moveNextField(e) {
         var currentField = e.target;
         var nextField = document.getElementById(getNextID(currentField));
 
-        console.log(currentField);
-        console.log(nextField);
         if (currentField.value.length >= currentField.maxLength) {
           currentField.value = currentField.value.toUpperCase();
           nextField.focus(); 
@@ -23,7 +21,10 @@ function getNextID(field) {
   var temp = field.id;
   var output = "";
 
-  if (temp.charAt(0) == 'J') {
+  if (temp.charAt(0) == 'J' && temp.charAt(1) == '5') {
+    output = 'A1';
+  }
+  else if (temp.charAt(0) == 'J') {
     output = 'A'.concat(+temp.charAt(1) + 1);
   }
   else {
