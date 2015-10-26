@@ -13,8 +13,9 @@ describe("Options", function() {
 
 describe("getNextField", function() {
 
-	it("should return B1 if the input is A1", function() {
-		var A1 = "A1";
+	it("should return B1 if the input is an element with id A1", function() {
+		var A1 = document.createElement("input");
+		A1.id = "A1";
 
 		expect(getNextField(A1)).toEqual("B1");
 	});
