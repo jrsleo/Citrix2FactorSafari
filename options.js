@@ -1,19 +1,11 @@
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
-
-// document.getElementById('A1').addEventListener('keyup', function() {
-//   moveOnMax(this, document.getElementById('B1')); 
-// });
-// document.getElementById('B1').addEventListener('keyup', function() {
-//   moveOnMax(this, document.getElementById('C1')); 
-// });
-
-document.getElementById("parent").addEventListener("keyup", moveNextField);
+document.getElementById('parent').addEventListener('keyup', moveNextField);
 
 function moveNextField(e) {
   if (e.target !== e.currentTarget) {
         var currentField = e.target;
-        var nextField = document.getElementById(getNextField(currentField));
+        var nextField = document.getElementById(getNextID(currentField));
 
         console.log(currentField);
         console.log(nextField);
@@ -27,7 +19,7 @@ function moveNextField(e) {
   e.stopPropagation();
 }
 
-function getNextField(field) {
+function getNextID(field) {
   var temp = field.id;
   var output = "";
 
@@ -37,8 +29,6 @@ function getNextField(field) {
   else {
     output = nextLetter(temp.charAt(0)).concat(temp.charAt(1));  
   }
-  
-  console.log(output);
 
   return output;
 }
@@ -52,15 +42,6 @@ function nextLetter(s){
             default: return String.fromCharCode(++c);
         }
     });
-}
-
-// Capitalize character and focus/select next field in the grid
-function moveOnMax(field, nextFieldID) { 
-  if (field.value.length >= field.maxLength) {
-    field.value = field.value.toUpperCase();
-    nextFieldID.focus(); 
-    nextFieldID.select();
-  } 
 }
 
 // Saves options to chrome.storage.local.

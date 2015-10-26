@@ -11,26 +11,26 @@ describe("Options", function() {
 
 });
 
-describe("getNextField", function() {
+describe("getNextID", function() {
 
 	it("should return B1 if the input is an element with id A1", function() {
 		var element = document.createElement("input");
 		element.id = "A1";
 
-		expect(getNextField(element)).toEqual("B1");
+		expect(getNextID(element)).toEqual("B1");
 	});
 
 	it("should return C1 if the input is an element with id B1", function() {
 		var element = document.createElement("input");
 		element.id = "B1";
 
-		expect(getNextField(element)).toEqual("C1");
+		expect(getNextID(element)).toEqual("C1");
 	});
 
 	it("should return A2 if the input is an element with id J1", function() {
 		var element = document.createElement("input");
 		element.id = "J1";
 
-		expect(getNextField(element)).toEqual("A2");
+		expect(getNextID(element)).toEqual("A2");
 	});
 });
