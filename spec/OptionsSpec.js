@@ -26,4 +26,11 @@ describe("getNextField", function() {
 
 		expect(getNextField(element)).toEqual("C1");
 	});
+
+	it("should return A2 if the input is an element with id J1", function() {
+		var element = document.createElement("input");
+		element.id = "J1";
+
+		expect(getNextField(element)).toEqual("A2");
+	});
 });
