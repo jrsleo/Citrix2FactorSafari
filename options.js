@@ -12,9 +12,11 @@ document.getElementById("parent").addEventListener("keyup", moveNextField);
 
 function moveNextField(e) {
   if (e.target !== e.currentTarget) {
-        var currentField = e.target.id;
+        var currentField = e.target;
         var nextField = document.getElementById(getNextField(currentField));
 
+        console.log(currentField);
+        console.log(nextField);
         if (currentField.value.length >= currentField.maxLength) {
           currentField.value = currentField.value.toUpperCase();
           nextField.focus(); 
