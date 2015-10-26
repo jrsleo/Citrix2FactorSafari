@@ -10,3 +10,12 @@ describe("Options", function() {
   });
 
 });
+
+describe("getNextField", function() {
+
+	it("should return B1 if the input is A1", function() {
+		var A1 = "A1";
+
+		expect(getNextField(A1)).toEqual("B1");
+	});
+});

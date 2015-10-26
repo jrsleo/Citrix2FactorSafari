@@ -1,3 +1,43 @@
+document.addEventListener('DOMContentLoaded', restore_options);
+document.getElementById('save').addEventListener('click', save_options);
+
+// document.getElementById('A1').addEventListener('keyup', function() {
+//   moveOnMax(this, document.getElementById('B1')); 
+// });
+// document.getElementById('B1').addEventListener('keyup', function() {
+//   moveOnMax(this, document.getElementById('C1')); 
+// });
+
+document.getElementById("parent").addEventListener("keyup", moveNextField);
+
+function moveNextField(e) {
+  if (e.target !== e.currentTarget) {
+        var currentField = e.target.id;
+        var nextField = document.getElementById(getNextField(currentField));
+
+        if (currentField.value.length >= currentField.maxLength) {
+          currentField.value = currentField.value.toUpperCase();
+          nextField.focus(); 
+          nextField.select();
+        } 
+  }
+
+  e.stopPropagation();
+}
+
+function getNextField(field) {
+  return "B1";
+}
+
+// Capitalize character and focus/select next field in the grid
+function moveOnMax(field, nextFieldID) { 
+  if (field.value.length >= field.maxLength) {
+    field.value = field.value.toUpperCase();
+    nextFieldID.focus(); 
+    nextFieldID.select();
+  } 
+}
+
 // Saves options to chrome.storage.local.
 function save_options() {  
   var A1 = document.getElementById('A1').value.toUpperCase();
@@ -219,7 +259,3 @@ function restore_options() {
     document.getElementById('J5').value = items.J5;
   });
 }
-
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
