@@ -14,9 +14,16 @@ describe("Options", function() {
 describe("getNextField", function() {
 
 	it("should return B1 if the input is an element with id A1", function() {
-		var A1 = document.createElement("input");
-		A1.id = "A1";
+		var element = document.createElement("input");
+		element.id = "A1";
 
-		expect(getNextField(A1)).toEqual("B1");
+		expect(getNextField(element)).toEqual("B1");
+	});
+
+	it("should return C1 if the input is an element with id B1", function() {
+		var element = document.createElement("input");
+		element.id = "B1";
+
+		expect(getNextField(element)).toEqual("C1");
 	});
 });

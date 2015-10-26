@@ -28,7 +28,24 @@ function moveNextField(e) {
 }
 
 function getNextField(field) {
-  return "B1";
+  var temp = field.id;
+  var output = "";
+
+  output = nextLetter(temp.charAt(0)) + temp.charAt(1);
+  console.log(output);
+
+  return output;
+}
+
+function nextLetter(s){
+    return s.replace(/([a-zA-Z])[^a-zA-Z]*$/, function(a){
+        var c= a.charCodeAt(0);
+        switch(c){
+            case 90: return 'A';
+            case 122: return 'a';
+            default: return String.fromCharCode(++c);
+        }
+    });
 }
 
 // Capitalize character and focus/select next field in the grid
