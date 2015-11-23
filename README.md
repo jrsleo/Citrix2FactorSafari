@@ -1,9 +1,9 @@
 # Citrix2Factor
 
-This is a chrome extension designed to help input the two factor authentication needed to log into the Citrix VPN. 
+This is a Safari extension designed to help input the two factor authentication needed to log into the Citrix VPN. 
 
 Requirements:
-Upon installing the extension, user must go to the Options page located on the Chrome Extensions screen.
+Upon installing the extension, user must click on the toolbar icon to access the options screen.
 On the options screen, user must input their own personal grid and click 'Save'. (Data is stored locally only)
 
 Directions:
