@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Jordan Schultz</string>
 	<key>Builder Version</key>
-	<string>11601.2.7.2</string>
+	<string>11601.3.9</string>
 	<key>CFBundleDisplayName</key>
 	<string>Citrix2FactorSafari</string>
 	<key>CFBundleIdentifier</key>
@@ -18,6 +18,8 @@
 	<string>1</string>
 	<key>Chrome</key>
 	<dict>
+		<key>Database Quota</key>
+		<integer>1048576</integer>
 		<key>Popovers</key>
 		<array>
 			<dict>
@@ -33,7 +35,7 @@
 				<key>Identifier</key>
 				<string>toolbarbutton</string>
 				<key>Image</key>
-				<string>lion-icon-safari.png</string>
+				<string>lib/jasmine-2.3.4/jasmine_favicon.png</string>
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>
@@ -41,7 +43,7 @@
 				<key>Popover</key>
 				<string>options</string>
 				<key>Tool Tip</key>
-				<string>Access options screen</string>
+				<string>Access Citrix2Factor bingo card</string>
 			</dict>
 		</array>
 	</dict>
@@ -54,6 +56,10 @@
 				<string>challenge.js</string>
 			</array>
 		</dict>
+		<key>Whitelist</key>
+		<array>
+			<string>https://citrix2.alldata.net/Citrix/XenAppCol/auth/challenge.aspx</string>
+		</array>
 	</dict>
 	<key>Description</key>
 	<string>This extension is designed to help input the two factor authentication needed to log into the Citrix VPN</string>
@@ -67,7 +73,7 @@
 		<dict>
 			<key>Allowed Domains</key>
 			<array>
-				<string>https://citrix2.alldata.net/Citrix/XenAppCol/auth/challenge.aspx</string>
+				<string>citrix2.alldata.net</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>

@@ -1,6 +1,66 @@
-document.addEventListener('DOMContentLoaded', restore_options);
+safari.application.addEventListener("popover", restore_options, true);
+safari.application.addEventListener("message", handleMessage, false);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('parent').addEventListener('keyup', moveNextField);
+initializeStorage();
+
+function handleMessage(msgEvent) {
+    if (msgEvent.name === "solve") {
+      var data = {};
+      data.A1 = localStorage.A1;
+      data.A2 = localStorage.A2;
+      data.A3 = localStorage.A3;
+      data.A4 = localStorage.A4;
+      data.A5 = localStorage.A5;
+      data.B1 = localStorage.B1;
+      data.B2 = localStorage.B2;
+      data.B3 = localStorage.B3;
+      data.B4 = localStorage.B4;
+      data.B5 = localStorage.B5;
+      data.C1 = localStorage.C1;
+      data.C2 = localStorage.C2;
+      data.C3 = localStorage.C3;
+      data.C4 = localStorage.C4;
+      data.C5 = localStorage.C5;
+      data.D1 = localStorage.D1;
+      data.D2 = localStorage.D2;
+      data.D3 = localStorage.D3;
+      data.D4 = localStorage.D4;
+      data.D5 = localStorage.D5;
+      data.E1 = localStorage.E1;
+      data.E2 = localStorage.E2;
+      data.E3 = localStorage.E3;
+      data.E4 = localStorage.E4;
+      data.E5 = localStorage.E5;
+      data.F1 = localStorage.F1;
+      data.F2 = localStorage.F2;
+      data.F3 = localStorage.F3;
+      data.F4 = localStorage.F4;
+      data.F5 = localStorage.F5;
+      data.G1 = localStorage.G1;
+      data.G2 = localStorage.G2;
+      data.G3 = localStorage.G3;
+      data.G4 = localStorage.G4;
+      data.G5 = localStorage.G5;
+      data.H1 = localStorage.H1;
+      data.H2 = localStorage.H2;
+      data.H3 = localStorage.H3;
+      data.H4 = localStorage.H4;
+      data.H5 = localStorage.H5;
+      data.I1 = localStorage.I1;
+      data.I2 = localStorage.I2;
+      data.I3 = localStorage.I3;
+      data.I4 = localStorage.I4;
+      data.I5 = localStorage.I5;
+      data.J1 = localStorage.J1;
+      data.J2 = localStorage.J2;
+      data.J3 = localStorage.J3;
+      data.J4 = localStorage.J4;
+      data.J5 = localStorage.J5;
+
+      msgEvent.target.page.dispatchMessage("answer", data);
+    }
+}
 
 function moveNextField(e) {
   if (e.target !== e.currentTarget) {
@@ -45,224 +105,170 @@ function nextLetter(s){
     });
 }
 
-// Saves options to chrome.storage.local.
-function save_options() {  
-  var A1 = document.getElementById('A1').value.toUpperCase();
-  var A2 = document.getElementById('A2').value.toUpperCase();
-  var A3 = document.getElementById('A3').value.toUpperCase();
-  var A4 = document.getElementById('A4').value.toUpperCase();
-  var A5 = document.getElementById('A5').value.toUpperCase();
-  var B1 = document.getElementById('B1').value.toUpperCase();
-  var B2 = document.getElementById('B2').value.toUpperCase();
-  var B3 = document.getElementById('B3').value.toUpperCase();
-  var B4 = document.getElementById('B4').value.toUpperCase();
-  var B5 = document.getElementById('B5').value.toUpperCase();
-  var C1 = document.getElementById('C1').value.toUpperCase();
-  var C2 = document.getElementById('C2').value.toUpperCase();
-  var C3 = document.getElementById('C3').value.toUpperCase();
-  var C4 = document.getElementById('C4').value.toUpperCase();
-  var C5 = document.getElementById('C5').value.toUpperCase();
-  var D1 = document.getElementById('D1').value.toUpperCase();
-  var D2 = document.getElementById('D2').value.toUpperCase();
-  var D3 = document.getElementById('D3').value.toUpperCase();
-  var D4 = document.getElementById('D4').value.toUpperCase();
-  var D5 = document.getElementById('D5').value.toUpperCase();
-  var E1 = document.getElementById('E1').value.toUpperCase();
-  var E2 = document.getElementById('E2').value.toUpperCase();
-  var E3 = document.getElementById('E3').value.toUpperCase();
-  var E4 = document.getElementById('E4').value.toUpperCase();
-  var E5 = document.getElementById('E5').value.toUpperCase();
-  var F1 = document.getElementById('F1').value.toUpperCase();
-  var F2 = document.getElementById('F2').value.toUpperCase();
-  var F3 = document.getElementById('F3').value.toUpperCase();
-  var F4 = document.getElementById('F4').value.toUpperCase();
-  var F5 = document.getElementById('F5').value.toUpperCase();
-  var G1 = document.getElementById('G1').value.toUpperCase();
-  var G2 = document.getElementById('G2').value.toUpperCase();
-  var G3 = document.getElementById('G3').value.toUpperCase();
-  var G4 = document.getElementById('G4').value.toUpperCase();
-  var G5 = document.getElementById('G5').value.toUpperCase();
-  var H1 = document.getElementById('H1').value.toUpperCase();
-  var H2 = document.getElementById('H2').value.toUpperCase();
-  var H3 = document.getElementById('H3').value.toUpperCase();
-  var H4 = document.getElementById('H4').value.toUpperCase();
-  var H5 = document.getElementById('H5').value.toUpperCase();
-  var I1 = document.getElementById('I1').value.toUpperCase();
-  var I2 = document.getElementById('I2').value.toUpperCase();
-  var I3 = document.getElementById('I3').value.toUpperCase();
-  var I4 = document.getElementById('I4').value.toUpperCase();
-  var I5 = document.getElementById('I5').value.toUpperCase();
-  var J1 = document.getElementById('J1').value.toUpperCase();
-  var J2 = document.getElementById('J2').value.toUpperCase();
-  var J3 = document.getElementById('J3').value.toUpperCase();
-  var J4 = document.getElementById('J4').value.toUpperCase();
-  var J5 = document.getElementById('J5').value.toUpperCase();
+function initializeStorage () {
+  if (!localStorage.A1) localStorage.A1 = '';
+  if (!localStorage.A2) localStorage.A2 = '';
+  if (!localStorage.A3) localStorage.A3 = '';
+  if (!localStorage.A4) localStorage.A4 = '';
+  if (!localStorage.A5) localStorage.A5 = '';
+  if (!localStorage.B1) localStorage.B1 = '';
+  if (!localStorage.B2) localStorage.B2 = '';
+  if (!localStorage.B3) localStorage.B3 = '';
+  if (!localStorage.B4) localStorage.B4 = '';
+  if (!localStorage.B5) localStorage.B5 = '';
+  if (!localStorage.C1) localStorage.C1 = '';
+  if (!localStorage.C2) localStorage.C2 = '';
+  if (!localStorage.C3) localStorage.C3 = '';
+  if (!localStorage.C4) localStorage.C4 = '';
+  if (!localStorage.C5) localStorage.C5 = '';
+  if (!localStorage.D1) localStorage.D1 = '';
+  if (!localStorage.D2) localStorage.D2 = '';
+  if (!localStorage.D3) localStorage.D3 = '';
+  if (!localStorage.D4) localStorage.D4 = '';
+  if (!localStorage.D5) localStorage.D5 = '';
+  if (!localStorage.E1) localStorage.E1 = '';
+  if (!localStorage.E2) localStorage.E2 = '';
+  if (!localStorage.E3) localStorage.E3 = '';
+  if (!localStorage.E4) localStorage.E4 = '';
+  if (!localStorage.E5) localStorage.E5 = '';
+  if (!localStorage.F1) localStorage.F1 = '';
+  if (!localStorage.F2) localStorage.F2 = '';
+  if (!localStorage.F3) localStorage.F3 = '';
+  if (!localStorage.F4) localStorage.F4 = '';
+  if (!localStorage.F5) localStorage.F5 = '';
+  if (!localStorage.G1) localStorage.G1 = '';
+  if (!localStorage.G2) localStorage.G2 = '';
+  if (!localStorage.G3) localStorage.G3 = '';
+  if (!localStorage.G4) localStorage.G4 = '';
+  if (!localStorage.G5) localStorage.G5 = '';
+  if (!localStorage.H1) localStorage.H1 = '';
+  if (!localStorage.H2) localStorage.H2 = '';
+  if (!localStorage.H3) localStorage.H3 = '';
+  if (!localStorage.H4) localStorage.H4 = '';
+  if (!localStorage.H5) localStorage.H5 = '';
+  if (!localStorage.I1) localStorage.I1 = '';
+  if (!localStorage.I2) localStorage.I2 = '';
+  if (!localStorage.I3) localStorage.I3 = '';
+  if (!localStorage.I4) localStorage.I4 = '';
+  if (!localStorage.I5) localStorage.I5 = '';
+  if (!localStorage.J1) localStorage.J1 = '';
+  if (!localStorage.J2) localStorage.J2 = '';
+  if (!localStorage.J3) localStorage.J3 = '';
+  if (!localStorage.J4) localStorage.J4 = '';
+  if (!localStorage.J5) localStorage.J5 = '';
+}
 
-  chrome.storage.local.set({
-    A1: A1,
-    A2: A2,
-    A3: A3,
-    A4: A4,
-    A5: A5,
-    B1: B1,
-    B2: B2,
-    B3: B3,
-    B4: B4,
-    B5: B5,
-    C1: C1,
-    C2: C2,
-    C3: C3,
-    C4: C4,
-    C5: C5,
-    D1: D1,
-    D2: D2,
-    D3: D3,
-    D4: D4,
-    D5: D5,
-    E1: E1,
-    E2: E2,
-    E3: E3,
-    E4: E4,
-    E5: E5,
-    F1: F1,
-    F2: F2,
-    F3: F3,
-    F4: F4,
-    F5: F5,
-    G1: G1,
-    G2: G2,
-    G3: G3,
-    G4: G4,
-    G5: G5,
-    H1: H1,
-    H2: H2,
-    H3: H3,
-    H4: H4,
-    H5: H5,
-    I1: I1,
-    I2: I2,
-    I3: I3,
-    I4: I4,
-    I5: I5,
-    J1: J1,
-    J2: J2,
-    J3: J3,
-    J4: J4,
-    J5: J5
-  }, function() {
-    // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
-    setTimeout(function() {
-      status.textContent = '';
-    }, 1000);
-  });
+function save_options() {  
+  localStorage.A1 = document.getElementById('A1').value.toUpperCase();
+  localStorage.A2 = document.getElementById('A2').value.toUpperCase();
+  localStorage.A3 = document.getElementById('A3').value.toUpperCase();
+  localStorage.A4 = document.getElementById('A4').value.toUpperCase();
+  localStorage.A5 = document.getElementById('A5').value.toUpperCase();
+  localStorage.B1 = document.getElementById('B1').value.toUpperCase();
+  localStorage.B2 = document.getElementById('B2').value.toUpperCase();
+  localStorage.B3 = document.getElementById('B3').value.toUpperCase();
+  localStorage.B4 = document.getElementById('B4').value.toUpperCase();
+  localStorage.B5 = document.getElementById('B5').value.toUpperCase();
+  localStorage.C1 = document.getElementById('C1').value.toUpperCase();
+  localStorage.C2 = document.getElementById('C2').value.toUpperCase();
+  localStorage.C3 = document.getElementById('C3').value.toUpperCase();
+  localStorage.C4 = document.getElementById('C4').value.toUpperCase();
+  localStorage.C5 = document.getElementById('C5').value.toUpperCase();
+  localStorage.D1 = document.getElementById('D1').value.toUpperCase();
+  localStorage.D2 = document.getElementById('D2').value.toUpperCase();
+  localStorage.D3 = document.getElementById('D3').value.toUpperCase();
+  localStorage.D4 = document.getElementById('D4').value.toUpperCase();
+  localStorage.D5 = document.getElementById('D5').value.toUpperCase();
+  localStorage.E1 = document.getElementById('E1').value.toUpperCase();
+  localStorage.E2 = document.getElementById('E2').value.toUpperCase();
+  localStorage.E3 = document.getElementById('E3').value.toUpperCase();
+  localStorage.E4 = document.getElementById('E4').value.toUpperCase();
+  localStorage.E5 = document.getElementById('E5').value.toUpperCase();
+  localStorage.F1 = document.getElementById('F1').value.toUpperCase();
+  localStorage.F2 = document.getElementById('F2').value.toUpperCase();
+  localStorage.F3 = document.getElementById('F3').value.toUpperCase();
+  localStorage.F4 = document.getElementById('F4').value.toUpperCase();
+  localStorage.F5 = document.getElementById('F5').value.toUpperCase();
+  localStorage.G1 = document.getElementById('G1').value.toUpperCase();
+  localStorage.G2 = document.getElementById('G2').value.toUpperCase();
+  localStorage.G3 = document.getElementById('G3').value.toUpperCase();
+  localStorage.G4 = document.getElementById('G4').value.toUpperCase();
+  localStorage.G5 = document.getElementById('G5').value.toUpperCase();
+  localStorage.H1 = document.getElementById('H1').value.toUpperCase();
+  localStorage.H2 = document.getElementById('H2').value.toUpperCase();
+  localStorage.H3 = document.getElementById('H3').value.toUpperCase();
+  localStorage.H4 = document.getElementById('H4').value.toUpperCase();
+  localStorage.H5 = document.getElementById('H5').value.toUpperCase();
+  localStorage.I1 = document.getElementById('I1').value.toUpperCase();
+  localStorage.I2 = document.getElementById('I2').value.toUpperCase();
+  localStorage.I3 = document.getElementById('I3').value.toUpperCase();
+  localStorage.I4 = document.getElementById('I4').value.toUpperCase();
+  localStorage.I5 = document.getElementById('I5').value.toUpperCase();
+  localStorage.J1 = document.getElementById('J1').value.toUpperCase();
+  localStorage.J2 = document.getElementById('J2').value.toUpperCase();
+  localStorage.J3 = document.getElementById('J3').value.toUpperCase();
+  localStorage.J4 = document.getElementById('J4').value.toUpperCase();
+  localStorage.J5 = document.getElementById('J5').value.toUpperCase();
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById('status');
+  status.textContent = 'Options saved.';
+  setTimeout(function() {
+    status.textContent = '';
+  }, 1000);
 }
 
 // Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
+// stored in storage.
 function restore_options() {
-  chrome.storage.local.get({
-    A1: '',
-    A2: '',
-    A3: '',
-    A4: '',
-    A5: '',
-    B1: '',
-    B2: '',
-    B3: '',
-    B4: '',
-    B5: '',
-    C1: '',
-    C2: '',
-    C3: '',
-    C4: '',
-    C5: '',
-    D1: '',
-    D2: '',
-    D3: '',
-    D4: '',
-    D5: '',
-    E1: '',
-    E2: '',
-    E3: '',
-    E4: '',
-    E5: '',
-    F1: '',
-    F2: '',
-    F3: '',
-    F4: '',
-    F5: '',
-    G1: '',
-    G2: '',
-    G3: '',
-    G4: '',
-    G5: '',
-    H1: '',
-    H2: '',
-    H3: '',
-    H4: '',
-    H5: '',
-    I1: '',
-    I2: '',
-    I3: '',
-    I4: '',
-    I5: '',
-    J1: '',
-    J2: '',
-    J3: '',
-    J4: '',
-    J5: ''
-  }, function(items) {
-    document.getElementById('A1').value = items.A1;
-    document.getElementById('A2').value = items.A2;
-    document.getElementById('A3').value = items.A3;
-    document.getElementById('A4').value = items.A4;
-    document.getElementById('A5').value = items.A5;
-    document.getElementById('B1').value = items.B1;
-    document.getElementById('B2').value = items.B2;
-    document.getElementById('B3').value = items.B3;
-    document.getElementById('B4').value = items.B4;
-    document.getElementById('B5').value = items.B5;
-    document.getElementById('C1').value = items.C1;
-    document.getElementById('C2').value = items.C2;
-    document.getElementById('C3').value = items.C3;
-    document.getElementById('C4').value = items.C4;
-    document.getElementById('C5').value = items.C5;
-    document.getElementById('D1').value = items.D1;
-    document.getElementById('D2').value = items.D2;
-    document.getElementById('D3').value = items.D3;
-    document.getElementById('D4').value = items.D4;
-    document.getElementById('D5').value = items.D5;
-    document.getElementById('E1').value = items.E1;
-    document.getElementById('E2').value = items.E2;
-    document.getElementById('E3').value = items.E3;
-    document.getElementById('E4').value = items.E4;
-    document.getElementById('E5').value = items.E5;
-    document.getElementById('F1').value = items.F1;
-    document.getElementById('F2').value = items.F2;
-    document.getElementById('F3').value = items.F3;
-    document.getElementById('F4').value = items.F4;
-    document.getElementById('F5').value = items.F5;
-    document.getElementById('G1').value = items.G1;
-    document.getElementById('G2').value = items.G2;
-    document.getElementById('G3').value = items.G3;
-    document.getElementById('G4').value = items.G4;
-    document.getElementById('G5').value = items.G5;
-    document.getElementById('H1').value = items.H1;
-    document.getElementById('H2').value = items.H2;
-    document.getElementById('H3').value = items.H3;
-    document.getElementById('H4').value = items.H4;
-    document.getElementById('H5').value = items.H5;
-    document.getElementById('I1').value = items.I1;
-    document.getElementById('I2').value = items.I2;
-    document.getElementById('I3').value = items.I3;
-    document.getElementById('I4').value = items.I4;
-    document.getElementById('I5').value = items.I5;
-    document.getElementById('J1').value = items.J1;
-    document.getElementById('J2').value = items.J2;
-    document.getElementById('J3').value = items.J3;
-    document.getElementById('J4').value = items.J4;
-    document.getElementById('J5').value = items.J5;
-  });
+  document.getElementById('A1').value = localStorage.A1;
+  document.getElementById('A2').value = localStorage.A2;
+  document.getElementById('A3').value = localStorage.A3;
+  document.getElementById('A4').value = localStorage.A4;
+  document.getElementById('A5').value = localStorage.A5;
+  document.getElementById('B1').value = localStorage.B1;
+  document.getElementById('B2').value = localStorage.B2;
+  document.getElementById('B3').value = localStorage.B3;
+  document.getElementById('B4').value = localStorage.B4;
+  document.getElementById('B5').value = localStorage.B5;
+  document.getElementById('C1').value = localStorage.C1;
+  document.getElementById('C2').value = localStorage.C2;
+  document.getElementById('C3').value = localStorage.C3;
+  document.getElementById('C4').value = localStorage.C4;
+  document.getElementById('C5').value = localStorage.C5;
+  document.getElementById('D1').value = localStorage.D1;
+  document.getElementById('D2').value = localStorage.D2;
+  document.getElementById('D3').value = localStorage.D3;
+  document.getElementById('D4').value = localStorage.D4;
+  document.getElementById('D5').value = localStorage.D5;
+  document.getElementById('E1').value = localStorage.E1;
+  document.getElementById('E2').value = localStorage.E2;
+  document.getElementById('E3').value = localStorage.E3;
+  document.getElementById('E4').value = localStorage.E4;
+  document.getElementById('E5').value = localStorage.E5;
+  document.getElementById('F1').value = localStorage.F1;
+  document.getElementById('F2').value = localStorage.F2;
+  document.getElementById('F3').value = localStorage.F3;
+  document.getElementById('F4').value = localStorage.F4;
+  document.getElementById('F5').value = localStorage.F5;
+  document.getElementById('G1').value = localStorage.G1;
+  document.getElementById('G2').value = localStorage.G2;
+  document.getElementById('G3').value = localStorage.G3;
+  document.getElementById('G4').value = localStorage.G4;
+  document.getElementById('G5').value = localStorage.G5;
+  document.getElementById('H1').value = localStorage.H1;
+  document.getElementById('H2').value = localStorage.H2;
+  document.getElementById('H3').value = localStorage.H3;
+  document.getElementById('H4').value = localStorage.H4;
+  document.getElementById('H5').value = localStorage.H5;
+  document.getElementById('I1').value = localStorage.I1;
+  document.getElementById('I2').value = localStorage.I2;
+  document.getElementById('I3').value = localStorage.I3;
+  document.getElementById('I4').value = localStorage.I4;
+  document.getElementById('I5').value = localStorage.I5;
+  document.getElementById('J1').value = localStorage.J1;
+  document.getElementById('J2').value = localStorage.J2;
+  document.getElementById('J3').value = localStorage.J3;
+  document.getElementById('J4').value = localStorage.J4;
+  document.getElementById('J5').value = localStorage.J5;
 }
